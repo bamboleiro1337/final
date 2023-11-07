@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+    {% block title %}
+    <title>{{ title }}</title>
+
+    {% endblock %}
+    
+
+{% block content %}
+
+
+
+<div class="login-container">
+    <form method="post" action="/web/login-final">
+        <div class="mb-1"><p class="h1">{{ title }}</p></div>
+        <div class="mb-2">
+            <label for="login" class="form-label">Логін</label>
+            <input name="login" type="email" class="form-control" id="login" required placeholder="name@example.com">
+        </div>
+        
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Пароль</label>
+            <input name="password" type="password" class="form-control" id="password" required minlength="{{ min_password_lenth }}">
+        </div>
+        
+        <div class="mb-4"><button class="btn btn-outline-success" type="submit">Залогінитися</button></div>
+
+    </form>
+</div>
+
+<style>
+    .login-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-49%, -49%);
+    }
+    .mb-1 {
+        text-align: center;
+
+    }
+    .mb-2 {
+        width: 500px;
+        text-align: center;
+    }
+    .mb-3 {
+        width: 500px;
+        text-align: center;
+    }
+    .mb-4 {
+        width: 500px;
+        text-align: center;
+    }
+</style>
+
+
+{% endblock %}

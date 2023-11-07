@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+    {% block title %}
+    <div class="title"><title>{{ title }}</title></div>
+
+    {% endblock %}
+    
+
+{% block content %}
+
+<div class="register-container">
+    <form method="post" action="/web/register-final">
+        <div class="mb-1">
+            <label for="login" class="form-label">{{ title }}</label>
+        </div>
+        
+        <div class="mb-2">
+            <label for="login" class="form-label">Електронна пошта</label>
+            <input name="login" type="email" class="form-control" id="login" required placeholder="name@example.com">
+        </div>
+        
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Пароль</label>
+            <input name="password" type="password" class="form-control" id="password" required minlength="{{ min_password_lenth }}">
+        </div>
+
+
+        <div class="mb-4">
+            <label for="name" class="form-label">Ім'я</label>
+            <input name="name" type="text" class="form-control" id="name" required minlength="3">
+        </div>
+
+
+        <div class="mb-5">
+            <label for="notes" class="form-label">Примітки</label>
+            <input name="notes" type="text" class="form-control" id="notes">
+        </div>
+        <div class="mb-6">
+            <button class="btn btn-outline-success" type="submit">Зареєструватися</button>
+        </div>
+
+
+    </form>
+</div>
+
+
+<style>
+    .register-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-49%, -49%);
+    }
+    .mb-1 {
+        font-size: 60px;
+        text-align: center;
+
+    }
+    .mb-2 {
+        width: 500px;
+        text-align: center;
+    }
+    .mb-3 {
+        width: 500px;
+        text-align: center;
+    }
+    .mb-4 {
+        width: 500px;
+        text-align: center;
+    }
+    .mb-5 {
+        width: 500px;
+        text-align: center;
+    }
+    .mb-6 {
+        text-align: center;
+    }
+    .button {
+        border-radius: 8px;
+    }
+</style>
+
+{% endblock %}

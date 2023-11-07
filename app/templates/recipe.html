@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+    {% block title %}
+    <title>{{ title }}</title>
+    {% endblock %}
+    
+
+{% block content %}
+    <div class="container">
+        <div class="mb-1">
+            <p class="h1">{{ recipe.title }}</p>
+        </div>
+
+        <div class="mb-2">
+            <p class="h3">Складність: {{ recipe.complexity }}/10</p><br><br>
+        </div>
+       
+        <div class="mb-3">
+            <h2><p>Приготування:</p></h2><br>
+            <h2><p>{{ recipe.recipe }}</p></h2>
+        </div>
+ 
+    </div>
+
+    <div class="container-2">
+        <div class="mb-4">
+            <img src="{{ recipe.image }}" alt="" width="800" height="700">
+        </div>
+    </div>
+    
+
+
+<style>
+    .container {
+        text-align: center;
+        float: left;
+        border: 5px solid darkgrey;
+        width: 50%;
+    }
+
+    .container-2 {
+        float: right;
+        width: 50%;
+        text-align: center;
+        margin-top: 5%;
+        
+    }
+    
+    
+</style>
+
+
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+        {% block title %}
+        <div class="title"><title>{{ title }}</title></div>
+        {% endblock %}
+
+{% block content %}
+
+<div class="recipe-container">
+
+    <form method="post" action="/web/create-final" >
+
+        <div class="mb-1">
+            <label for="title" class="form-label">Назва:</label>
+            <input name="title" type="text" class="form-control" id="title">
+        </div><br>
+
+        <div class="mb-2">
+            <label for="image" class="form-label">Зображення:</label>
+            <input name="image" type="text" class="form-control" id="image" required placeholder="URL">
+        </div>
+        
+        <div class="mb-3">
+            <label for="complexity" class="form-label">Складність:</label>
+            <select name='complexity' class="form-select" aria-label="Default select example">
+                <option selected>Складність:</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </div>
+
+
+        <div class="mb-4">
+            <label for="category" class="form-label">Категорія:</label>
+            <select name='category' class="form-select" aria-label="Default select example" id="category">
+                <option selected>Категорія:</option>
+                <option value="first-dishes">Перші страви</option>
+                <option value="second-dishes">Дргуі страви</option>
+                <option value="side-dishes">Гарніри</option>
+                <option value="desserts">Десерти</option>
+                <option value="drinks">Напої</option>
+            </select>
+        </div><br>
+        
+
+        <!-- <div class="mb-4">
+            <label for="category" class="form-label">Категорія</label>
+            <p class="mb-5">1 - Перші страви
+                            2 - Другі страви
+                            3 - Гарніри
+                            4 - Десерти
+                            5 - Напої
+            </p>
+            <input name="category" type="number" class="form-control" id="category">
+        </div> -->
+
+
+        
+        <div class="mb-6">
+            <label for="recipe" class="form-label">Рецепт</label>
+            <input name="recipe" type="text" class="form-control" id="recipe">
+        </div>
+
+        <div class="mb-7">
+            <center><button class="btn btn-outline-success" type="submit">Створити</button></center>
+        </div>
+        
+    </form>
+</div>
+    
+
+<style>
+    .recipe-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-49%, -49%);
+    }
+    .mb-1 {
+        text-align: center;
+        width: 500px;
+    }
+    .mb-2 {
+        text-align: center;
+    }
+    .mb-3 {
+        text-align: center;
+    }
+    .mb-4 {
+        text-align: center;
+    }
+    .mb-5 {
+        text-align: center;
+    }
+    .mb-6 {
+        text-align: center;
+    }
+    .btn {
+        border-radius: 8px;   
+    }
+
+</style>
+
+{% endblock %}
+

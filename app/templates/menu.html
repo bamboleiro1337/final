@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+    {% block title %}
+    <title>{{ title }}</title>
+    {% endblock %}
+    
+
+{% block content %}
+<!-- 
+{% if categories %}
+    <h3>Категорії</h3>
+
+    <div class="container-fluid">
+        <div class="row" style="padding:10px;">
+            <div>
+                {% for c in categories %}
+                    <a type="button" href='/web/by_category/{{ c.value }}' class="btn btn-primary" style="margin:2px;">{{ c.value }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endif %} -->
+
+
+    {% if is_admin %}
+        <p class="h1">dfvdsfvdf</p>
+    {% endif %}
+
+
+    {% if menu %}
+
+        <p class="h1">{{ title }}</p>
+
+        <div class="dish-container">
+            {% for dish in menu %}
+                <div class="dish">
+                    <a href="/web/menu/{{ dish.title }}"><p class="h2">{{ dish.title }}</p></a>
+                    <img src="{{ dish.image }}" alt="картинка лмао" width="200" height="200">
+                    <p class="h2">Складність: {{ dish.complexity }}/10</p>
+                </div>
+            {% endfor %}
+        </div>
+
+    {% else %}
+        <p class="h2">Немає доступних позицій</p>
+    {% endif %}
+<style>
+    .dish-container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .dish {
+        width: 200px; 
+        margin: 10px;
+        text-align: center;
+    }
+    .h2 {
+        margin-top: 20%;
+        text-align: center;
+    }
+
+    .h1 {
+        text-align: center;
+    }
+
+</style>
+
+
+{% endblock %}

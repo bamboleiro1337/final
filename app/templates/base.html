@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Рецепти від Ектора</title>
+
+    <link rel="icon" href="\app\static\favicon.png" type="image/png" >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+            integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+            crossorigin="anonymous"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    {% block title %}
+    {% endblock %}
+
+    <body style="background-color:slategray;">
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg bg-secondary navbar-dark">
+    <div class="container-fluid">
+      <div class="navbar-brand"></div>
+      <img src="{{ url_for('static', path='favicon.png') }}" alt="" width='35' height='35'>
+      <style>
+        img {
+          border-radius: 20%;
+        }
+      </style>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/web/home">Головна</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/web/menu">Рецепти</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Інше
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/web/contacts">Контакти</a></li>
+              <li><a class="dropdown-item" href="/web/about">Про автора</a></li>
+            </ul>
+          </li>
+          
+          
+          {% if user %}
+            <li class="nav-item">
+              <a class="nav-link" href="/web/message">Написати повідомлення</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/web/logout">Вийти({{ user[2] if user[2] else user.name }})</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/web/create">Створити рецепт</a>
+            </li>
+
+
+
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="/web/register">Зареєструватися</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/web/login">Ввійти</a>
+            </li>
+          {% endif %}
+
+
+
+
+        </ul>
+        <form class="d-flex" role="search" method="post" action="/web/menu">
+          <input class="form-control me-2" type="search" name="dish_name" placeholder="Введіть рецепт:" aria-label="Search" required minlength="3">
+          <button class="button" type="submit">Пошук</button>
+        </form>
+      </div>
+    </div>
+</nav>
+
+<style>
+  .button {
+    border-radius: 8px;
+  }
+</style>
+
+{% block content %}
+{% endblock %}
+
+  <script>
+    var ws = new WebSocket ("ws://127.0.0.1:8000/ws/");
+    /*var ws = new WebSocket ("wss://c187-194-44-36-178.ngrok-free.app")*/
+    ws.onmessage = function(event) {
+      console.log(event)
+      alert(event.data)
+
+    };
+
+    function sendMessage(event) {
+      var text = document.getElementById('messageText')
+      ws.send(text.value)
+      text.value = ''
+      event.preventDefault()
+    }
+
+
+  </script>
+
+</body>
+</html>
+
+
+
